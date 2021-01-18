@@ -1,12 +1,14 @@
 @include tablet {
     .contenedor-anuncios {
-        @include grid(3, $separacion/2)
+        @include grid(3, $separacion/2);
+        margin-bottom: 0;
     }
 }
 
 .anuncio {
     background-color: lighten($gris, 5);
     border: 1px solid darken($gris, 5);
+    margin-bottom: $separacion/2;
     .contenido-anuncio {
         padding: 2rem;
     }
@@ -14,17 +16,19 @@
     p {
         margin: 0;
     }
-    .precio {
-        color: $verde;
-        font-weight: $bold;
-        font-size: 3rem;
-    }
+}
+
+.precio {
+    color: $verde;
+    font-weight: $bold;
+    font-size: 3rem;
 }
 
 .iconos-caracteristicas {
     display: flex;
     list-style: none;
     padding: 0;
+    max-width: 40rem;
     li {
         flex: 1;
         display: flex;

@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     padding-top: 3rem;
+    align-items: center;
     @include tablet {
         flex-direction: row;
         justify-content: space-between;
@@ -9,9 +10,15 @@
 }
 
 .navegacion {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility .3s ease-in-out, opacity 0.5s linear;
     align-items: center;
     @include tablet {
         display: flex;
+        align-items: center;
+        opacity: 1;
+        visibility: visible;
     }
     a {
         color: $blanco;
@@ -30,4 +37,21 @@
             color: $verde;
         }
     }
+}
+
+
+/**Menu Hamburgesa**/
+
+.mobile-menu {
+    @include tablet {
+        display: none;
+    }
+    img {
+        width: 5rem;
+    }
+}
+
+.mostrar {
+    visibility: visible;
+    opacity: 1;
 }

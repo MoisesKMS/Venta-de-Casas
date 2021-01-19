@@ -10,14 +10,17 @@
     h4 {
         color: $gris;
     }
-    .anuncio,
-    .resumen-propiedad {
-        padding: $separacion/2;
+    .anuncio {
         background-color: $grisOscuro;
         border: 1px solid $grisOscuro;
         .precio {
             color: $verde;
         }
+        .icono {
+            filter: invert(100%);
+        }
+    }
+    .resumen-propiedad {
         .icono {
             filter: invert(100%);
         }

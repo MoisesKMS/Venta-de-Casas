@@ -22,14 +22,18 @@
 
     //Ejecutar el codigo despues de que el usuario envia el formulario
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $titulo = $_POST['titulo'];
-        $precio = $_POST['precio'];
-        $descripcion = $_POST['descripcion'];
-        $habitaciones = $_POST['habitaciones'];
-        $wc = $_POST['wc'];
-        $estacionamiento = $_POST['estacionamiento'];
-        $vendedorId = $_POST['vendedor'];
+        $titulo = mysqli_real_escape_string($db, $_POST['titulo']) ;
+        $precio = mysqli_real_escape_string($db, $_POST['precio']) ;
+        $descripcion = mysqli_real_escape_string($db, $_POST['descripcion']) ;
+        $habitaciones = mysqli_real_escape_string($db, $_POST['habitaciones']) ;
+        $wc = mysqli_real_escape_string($db, $_POST['wc']) ;
+        $estacionamiento = mysqli_real_escape_string($db, $_POST['estacionamiento']) ;
+        $vendedorId = mysqli_real_escape_string($db, $_POST['vendedor']) ;
 
+        //Asignar Files a una variable
+        $imagen = $_FILES['imagen'];
+
+        
         if(!$titulo){
             $errores[] = "Debes Añadir un Titulo";
         }
@@ -58,16 +62,43 @@
             $errores[] = "Elije un Vendedor";
         }
 
+        if(!$imagen['name']){
+            $errores[] = "La imagen es Obligatoria";
+        }
+
+        //Validar que la imagen no pase los 100kb
+
+        $medida = 1000 * 1000;
+
+        if($imagen['size'] > $medida){
+            $errores[] = "La imagen es muy pesada";
+        }
+
         if(empty($errores)){
+            /* Subiada de Archivos */
+            //Crear Carpeta
+            $carpetaImagenes = '../../imagenes/';
+
+            if(!is_dir($carpetaImagenes)){
+                mkdir($carpetaImagenes);
+            }
+
+            //Generar nombre Unico
+            $nombreImagen = md5(uniqid(rand(), true)) . '.jpg';
+
+            //Subir la Imagen
+            move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . $nombreImagen);
+
             //Insertar en la Base de Datos
-            $query = "INSERT INTO propiedades (titulo, precio, descripcion, habitaciones, wc, estacionamiento, creado, vendedorId) VALUES ('${titulo}', '${precio}', '${descripcion}', '${habitaciones}', '${wc}', '${estacionamiento}', '${creado}', '${vendedorId}')";
+            $query = "INSERT INTO propiedades (titulo, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, vendedorId) VALUES ('${titulo}', '${precio}', '${nombreImagen}' ,'${descripcion}', '${habitaciones}', '${wc}', '${estacionamiento}', '${creado}', '${vendedorId}')";
 
             //echo $query;
             $resultado = mysqli_query($db, $query);
 
             if($resultado){
                 //Redirecionar
-                header('Location: /admin');
+                header('Location: /admin?resultado=1');
+
             }
         }
 
@@ -89,7 +120,7 @@
         </div>
         <?php endforeach; ?>
 
-        <form class="formulario" method="POST" action="/admin/propiedades/crear.php">
+        <form class="formulario" method="POST" action="/admin/propiedades/crear.php" enctype="multipart/form-data">
             <fieldset>
                 <legend>Informacion General</legend>
                 <label for="titulo">Titulo:</label>

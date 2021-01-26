@@ -6,6 +6,19 @@
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $titulo = $_POST['titulo'];
         $precio = $_POST['precio'];
+        $descripcion = $_POST['descripcion'];
+        $habitaciones = $_POST['habitaciones'];
+        $wc = $_POST['wc'];
+        $estacionamiento = $_POST['estacionamiento'];
+        $vendedorId = $_POST['vendedor'];
+
+
+        //Insertar en la Base de Datos
+        $query = "INSERT INTO propiedades (titulo, precio, descripcion, habitaciones, wc, estacionamiento, 
+        vendedorId) VALUES ('${titulo}', '${precio}', '${descripcion}', '${habitaciones}', '${wc}', '${$estacionamiento}', '${vendedorId}')";
+
+        echo $query;
+
     }
 
 
@@ -49,7 +62,7 @@
             <fieldset>
                 <legend>Vendedor</legend>
 
-                <select>
+                <select name="vendedor">
                     <option value="1">Moises</option>
                     <option value="2">Karen</option>
                 </select>

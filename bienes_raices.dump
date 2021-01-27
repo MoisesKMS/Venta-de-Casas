@@ -1,0 +1,50 @@
+-- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
+--
+-- Host: localhost    Database: bienes_raices
+-- ------------------------------------------------------
+-- Server version	5.7.32-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `propiedades`
+--
+
+DROP TABLE IF EXISTS `propiedades`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `propiedades` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(60) DEFAULT NULL,
+  `precio` decimal(10,2) DEFAULT NULL,
+  `imagen` varchar(200) DEFAULT NULL,
+  `descripcion` longtext,
+  `habitaciones` int(1) DEFAULT NULL,
+  `wc` int(1) DEFAULT NULL,
+  `estacionamiento` int(1) DEFAULT NULL,
+  `creado` date DEFAULT NULL,
+  `vendedorId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `vendedorId_idx` (`vendedorId`),
+  CONSTRAINT `vendedorId` FOREIGN KEY (`vendedorId`) REFERENCES `vendedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `propiedades`
+--
+
+LOCK TABLES `propiedades` WRITE;
+/*!40000 ALTER TABLE `propiedades` DISABLE KEYS */;
+INSERT INTO `propiedades` VALUES (6,'Casa en la playa',1200000.00,'3a849e022bb88138618a25da8462a42a.jpg','asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd',3,3,3,'2021-01-26',1),(7,'Casa en el bosque',1200000.00,'0d671bed194d7ea024c3d215b247c7d5.jpg','dasdasdasdresultadoresultadoresultadoresultadoresultadoresultadoresultadoresultadoresultadoresultadoresultadoresultadoresultadoresultadoresultadoresultadoresultadoresultadoresultadoresultado',3,3,3,'2021-01-26',1);
+/*!40000 ALTER TABLE `propiedades` ENABLE KEYS */;
+UNLOCK TABLES;

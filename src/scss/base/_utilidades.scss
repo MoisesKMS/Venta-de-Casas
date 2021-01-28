@@ -2,6 +2,7 @@
     margin-top: $separacion / 2;
     margin-bottom: $separacion / 2;
 }
+
 .contenido-centrado {
     max-width: 80rem;
 }
@@ -9,4 +10,8 @@
 .alinear-derecha {
     display: flex;
     justify-content: flex-end;
+}
+
+.w-100 {
+    width: 100%;
 }

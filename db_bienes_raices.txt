@@ -1,0 +1,4 @@
+CREATE DATABASE biences_raices;
+USE bienes_raices;
+CREATE TABLE propiedades;
+CREATE TABLE vendedores;

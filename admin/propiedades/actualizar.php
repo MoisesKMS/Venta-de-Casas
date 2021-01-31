@@ -1,5 +1,10 @@
 <?php
+    require '../../includes/funciones.php'; 
+    $auth = estaAutenticado();
 
+    if(!$auth){
+        header('Location: ../../login.php');
+   }
 
     //Validar que sea un ID Valido
     $id = $_GET['id'];
@@ -128,7 +133,7 @@
     }
 
 
-    require '../../includes/funciones.php';  
+    
     incluirTemplate('header');
 ?>
 

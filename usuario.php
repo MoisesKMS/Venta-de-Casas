@@ -1,12 +1,14 @@
 <?php
 
+/** ELIMINAR ESTE ARCHIVO DESPUES DE EJECUTARLO !!!!!!!!!!!!!**/
+
 //Importar la conexion
 require 'includes/config/database.php';
 $db = conectarDB();
 
 //Crear E-mail y PASSWORD
-$email = "INSERTE EL CORREO";
-$password = "INSERTE LA CONTRASEÑA";
+$email = "INSERTA EL CORREO"; //CORREO
+$password = "INSERTA LA CONTRASEÑA"; //CONTRASEÑA
 
 $passwordHash = password_hash($password, PASSWORD_BCRYPT);
 
@@ -14,6 +16,6 @@ $passwordHash = password_hash($password, PASSWORD_BCRYPT);
 $query = "INSERT INTO usuarios (email, password) VALUES ('${email}', '${passwordHash}')";
 
 echo $query;
-exit;
+exit; /** BORRAR ESTA LINEA **/
 //Obtener los resultados
 mysqli_query($db, $query);

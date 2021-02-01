@@ -31,13 +31,17 @@
                 <div class="derecha">
                     <img src="/build/img/dark-mode.svg" alt="Modo Dark" class="dark-mode-boton">
                     <nav class="navegacion">
-                        <a href="nosotros.php">Nosotros</a>
-                        <a href="anuncios.php">Anuncios</a>
-                        <a href="blog.php">Blog</a>
-                        <a href="contacto.php">Contacto</a>
-                        <?php if($auth): ?>
-                            <a href="cerrar-sesion.php">Cerrar Sesion</a>
-                        <?php endif;?>
+                        <a href="../nosotros.php">Nosotros</a>
+                        <a href="../anuncios.php">Anuncios</a>
+                        <a href="../blog.php">Blog</a>
+                        <a href="../contacto.php">Contacto</a>
+                        <?php if($auth){ ?>
+                            <a href="../admin/index.php">Panel de Control</a>
+                            <a href="../cerrar-sesion.php">Cerrar Sesion</a>
+                        <?php }
+                        else{ ?>
+                            <a href="login.php">Iniciar Sesion</a>
+                        <?php }?>
                     </nav>
                 </div>
             </div>

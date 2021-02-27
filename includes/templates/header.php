@@ -34,7 +34,6 @@
                 </div>
 
                 <div class="derecha">
-                    <img src="/build/img/dark-mode.svg" alt="Modo Dark" class="dark-mode-boton">
                     <nav class="navegacion">
                         <a href="../nosotros.php">Nosotros</a>
                         <a href="../anuncios.php">Anuncios</a>
@@ -47,6 +46,7 @@
                         else{ ?>
                             <a href="login.php">Iniciar Sesion</a>
                         <?php }?>
+                        <img src="/build/img/dark-mode.svg" alt="Modo Dark" class="dark-mode-boton">
                     </nav>
                 </div>
             </div>

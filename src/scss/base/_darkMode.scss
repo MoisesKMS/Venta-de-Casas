@@ -42,10 +42,45 @@
             color: $blanco;
         }
     }
-    tbody{
-        td{
-            color: $blanco;
+
+    table.propiedades {
+        text-align: center;
+        margin-top: 4rem;
+        width: 100%;
+        border-spacing: 0;
+        thead {
+            background-color: $grisOscuro;
+            th {
+                color: $blanco;
+                padding: 2rem;
+            }
         }
-    }    
+        tbody{
+            td{
+                color: $blanco;
+            }
+        }
+    }
+
+    .boton-verde{
+        background-color: darken($verde, 13);
+        &:hover{
+            background-color: $verde;
+        }
+    }
+    
+    .boton-rojo-block {
+        background-color: darken($rojo, 13);
+        &:hover{
+            background-color: $rojo;
+        }
+    }
+
+    .boton-amarillo-block {
+        background-color: darken($amarillo, 13);
+        &:hover{
+            background-color: $amarillo;
+        }
+    }
 }
 

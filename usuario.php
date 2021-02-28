@@ -7,8 +7,8 @@ require 'includes/config/database.php';
 $db = conectarDB();
 
 //Crear E-mail y PASSWORD
-$email = "INSERTA EL CORREO"; //CORREO
-$password = "INSERTA LA CONTRASEÑA"; //CONTRASEÑA
+$email = "correo@correo.com"; //CORREO
+$password = "Mikuyami18"; //CONTRASEÑA
 
 $passwordHash = password_hash($password, PASSWORD_BCRYPT);
 
@@ -16,6 +16,6 @@ $passwordHash = password_hash($password, PASSWORD_BCRYPT);
 $query = "INSERT INTO usuarios (email, password) VALUES ('${email}', '${passwordHash}')";
 
 echo $query;
-exit; /** BORRAR ESTA LINEA **/
+//exit; /** BORRAR ESTA LINEA **/
 //Obtener los resultados
 mysqli_query($db, $query);

@@ -62,7 +62,12 @@
         }
     }
 
-    
+    .boton-verde{
+        background-color: darken($verde, 13);
+        &:hover{
+            background-color: $verde;
+        }
+    }
     
     .boton-rojo-block {
         background-color: darken($rojo, 13);

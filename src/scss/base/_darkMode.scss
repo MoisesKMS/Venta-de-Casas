@@ -69,12 +69,7 @@
         }
     }
     
-    .boton-rojo-block {
-        background-color: darken($rojo, 13);
-        &:hover{
-            background-color: $rojo;
-        }
-    }
+    
 
     .boton-amarillo-block {
         background-color: darken($amarillo, 13);

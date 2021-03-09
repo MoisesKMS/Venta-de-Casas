@@ -70,9 +70,9 @@
 
         <tbody><!--.Mostrar los resultados-->
         <?php while($propiedad = mysqli_fetch_assoc($resultadoConsulta)): ?>
-            <tr>
+            <tr> 
                 <td><?php echo $propiedad['id']; ?></td>
-                <td><?php echo $propiedad['titulo']; ?></td>
+                <td class="txt-blanco"><?php echo $propiedad['titulo']; ?></td>
                 <td><img src="/imagenes/<?php echo $propiedad['imagen']; ?>" alt="Casa en la Playa" class="imagen-tabla"></td>
                 <td>$<?php echo $propiedad['precio']; ?></td>
                 <td>

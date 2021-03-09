@@ -24,7 +24,7 @@ function css() {
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(postcss([autoprefixer(), cssnano()]))
-        // .pipe(postcss([autoprefixer()]))
+        .pipe(postcss([autoprefixer()]))
         .pipe(sourcemaps.write('.'))
         .pipe( dest('./build/css') );
 }
@@ -44,14 +44,16 @@ function imagenes() {
     return src(paths.imagenes)
         .pipe(cache(imagemin({ optimizationLevel: 3})))
         .pipe(dest('build/img'))
-        .pipe(notify({ message: 'Imagen Completada'}));
+        //.pipe(notify({ message: 'Imagen Completada'}))
+        ;
 }
 
 function versionWebp() {
     return src(paths.imagenes)
         .pipe( webp() )
         .pipe(dest('build/img'))
-        .pipe(notify({ message: 'Imagen Completada'}));
+        //.pipe(notify({ message: 'Imagen Completada'}))
+        ;
 }
 
 

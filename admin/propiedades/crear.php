@@ -13,7 +13,7 @@
     $resultado = mysqli_query($db, $consulta);
 
     //Arreglo con mensajes de errores
-    $errores = [];
+    $errores = Propiedad::getErrores();
 
     //variables 
     $titulo = "";
@@ -30,63 +30,15 @@
         
         $propiedad = new Propiedad($_POST);
 
-        $propiedad->guardar();
-
-        debuguear($propiedad);
-
-        $titulo = mysqli_real_escape_string($db, $_POST['titulo']) ;
-        $precio = mysqli_real_escape_string($db, $_POST['precio']) ;
-        $descripcion = mysqli_real_escape_string($db, $_POST['descripcion']) ;
-        $habitaciones = mysqli_real_escape_string($db, $_POST['habitaciones']) ;
-        $wc = mysqli_real_escape_string($db, $_POST['wc']) ;
-        $estacionamiento = mysqli_real_escape_string($db, $_POST['estacionamiento']) ;
-        $vendedorId = mysqli_real_escape_string($db, $_POST['vendedor']) ;
-
-        //Asignar Files a una variable
-        $imagen = $_FILES['imagen'];
+        $errores = $propiedad->validar();
 
         
-        if(!$titulo){
-            $errores[] = "Debes Añadir un Titulo";
-        }
-
-        if(!$precio){
-            $errores[] = "El Precio es Obligatorio";
-        }
-
-        if(strlen($descripcion)<50){
-            $errores[] = "La Descripcion es Obligatoria y debe tener al menos 50 Caracteres";
-        }
-
-        if(!$habitaciones){
-            $errores[] = "El Numero de habitaciones es Obligatorio";
-        }
-
-        if(!$wc){
-            $errores[] = "El Numero de baños es Obligatorio";
-        }
-
-        if(!$estacionamiento){
-            $errores[] = "El Numero de estacionamieto es Obligatorio";
-        }
-
-        if(!$vendedorId){
-            $errores[] = "Elije un Vendedor";
-        }
-
-        if(!$imagen['name']){
-            $errores[] = "La imagen es Obligatoria";
-        }
-
-        //Validar que la imagen no pase los 100kb
-
-        $medida = 1000 * 1000;
-
-        if($imagen['size'] > $medida){
-            $errores[] = "La imagen es muy pesada";
-        }
-
         if(empty($errores)){
+            $propiedad->guardar();
+
+            //Asignar Files a una variable
+            $imagen = $_FILES['imagen'];
+
             /* Subiada de Archivos */
             //Crear Carpeta
             $carpetaImagenes = '../../imagenes/';

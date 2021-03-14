@@ -1,5 +1,7 @@
 <?php
-    require 'includes/config/database.php';
+
+    //Incluye el header
+    require 'includes/app.php';
     $db = conectarDB();
 
     $errores = [];
@@ -48,13 +50,11 @@
     
 
 
-    //Incluye el header
-    require 'includes/funciones.php';  
     incluirTemplate('header');
 
     if($_SESSION['login'] == true){
         header('Location: /admin');
-        return;
+        exit;
     }
 
 ?>

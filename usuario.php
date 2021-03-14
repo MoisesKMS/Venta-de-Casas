@@ -3,7 +3,7 @@
 /** ELIMINAR ESTE ARCHIVO DESPUES DE EJECUTARLO !!!!!!!!!!!!!**/
 
 //Importar la conexion
-require 'includes/config/database.php';
+require 'includes/app.php';
 $db = conectarDB();
 
 //Crear E-mail y PASSWORD

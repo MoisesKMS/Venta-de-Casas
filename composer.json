@@ -1,0 +1,17 @@
+{
+    "name": "scarkms/venta-de-casas",
+    "description": "Creando un proyecto POO",
+    "type": "project",
+    "authors": [
+        {
+            "name": "ScarKMS",
+            "email": "moisesjimenez@yandex.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\" : "./classes"
+        }
+    }
+}

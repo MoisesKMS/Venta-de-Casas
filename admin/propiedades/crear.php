@@ -16,7 +16,7 @@
     //Arreglo con mensajes de errores
     $errores = Propiedad::getErrores();
 
-    /*//variables 
+    //variables 
     $titulo = "";
     $precio = "";
     $descripcion = "";
@@ -24,14 +24,18 @@
     $wc = "";
     $estacionamiento = "";
     $vendedorId = "";
-    $creado = date('Y/m/d');*/
+    $creado = date('Y/m/d');
 
     //Ejecutar el codigo despues de que el usuario envia el formulario
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        
+            
+
         $propiedad = new Propiedad($_POST);
 
         /* Subiada de Archivos */
+
+        //Asignar Files a una variable
+        $imagen = $_FILES['imagen'];
             
         //Generar nombre Unico
         $nombreImagen = md5(uniqid(rand(), true)) . '.jpg';
@@ -39,7 +43,7 @@
         // setear la imagen
         //Realiza un rezise a la imagen
         if($_FILES['imagen']['tmp_name']){
-            $image = Image::make($_FILES['imagen']['tmp_name'])->fit(800, 600);
+            //$image = Image::make($_FILES['imagen']['tmp_name'])->fit(800, 600);
             $propiedad->setImagen($nombreImagen);
         }
 
@@ -56,7 +60,8 @@
             }
 
             //Guarda la Imagen en elservidor
-            $image->save(CARPETA_IMAGENES . $nombreImagen);
+            //$image->save(CARPETA_IMAGENES . $nombreImagen);
+            move_uploaded_file($imagen['tmp_name'], CARPETA_IMAGENES . $nombreImagen);
 
             //Guarda en la base de datos 
             $resultado = $propiedad->guardar();

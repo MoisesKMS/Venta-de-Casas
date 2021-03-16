@@ -35,16 +35,27 @@ estaAutenticado();
         
         $propiedad->sincronizar($args);
 
-        
-
+        //Validacion
         $errores = $propiedad->validar();
-        
-        
+
+        //Subida de archivos
+
+        //Generar nombre Unico
+        $nombreImagen = md5(uniqid(rand(), true)) . '.jpg';
+
+
+        if($_FILES['propiedad']['tmp_name']['imagen']){
+            //$image = Image::make($_FILES['imagen']['tmp_name'])->fit(800, 600);
+            $propiedad->setImagen($nombreImagen);
+        }
+
 
         if(empty($errores)){
+           
+           
             /* Subiada de Archivos */
             //Crear Carpeta
-           $carpetaImagenes = '../../imagenes/';
+           /*$carpetaImagenes = '../../imagenes/';
 
            if(!is_dir($carpetaImagenes)){
                mkdir($carpetaImagenes);
@@ -63,8 +74,9 @@ estaAutenticado();
                 move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . $nombreImagen);
             }else{
                 $nombreImagen = $propiedad['imagen'];
-            }
+            }*/
 
+            exit;
             //Insertar en la Base de Datos
             $query = "UPDATE propiedades SET titulo = '${titulo}', precio = '${precio}', imagen = '${nombreImagen}', descripcion = '${descripcion}', habitaciones = ${habitaciones}, wc = ${wc}, estacionamiento  = ${estacionamiento},  vendedorId = ${vendedorId} WHERE id = ${id};";
 

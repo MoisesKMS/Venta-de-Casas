@@ -55,14 +55,7 @@
             move_uploaded_file($imagen, CARPETA_IMAGENES . $nombreImagen);
 
             //Guarda en la base de datos 
-            $resultado = $propiedad->guardar();
-
-            //Mensaje de Exito o Error
-            if($resultado){
-                //Redirecionar
-                header('Location: /admin?resultado=1');
-
-            }
+            $propiedad->guardar();
         }
 
     }

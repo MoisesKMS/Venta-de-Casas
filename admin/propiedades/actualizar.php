@@ -1,6 +1,7 @@
 <?php
 
 use App\Propiedad;
+use App\Vendedor;
 
 require '../../includes/app.php';
     
@@ -17,9 +18,8 @@ estaAutenticado();
     // Obtener los datos de la Propiedad
     $propiedad = Propiedad::find($id);
 
-    //Consultar vendedores
-    $consulta = "SELECT * FROM vendedores";
-    $resultado = mysqli_query($db, $consulta);
+    //Consulta par avendedores
+    $vendedores = Vendedor::all();
 
     //Arreglo con mensajes de errores
     $errores = Propiedad::getErrores();
@@ -53,37 +53,11 @@ estaAutenticado();
 
         if(empty($errores)){
             // Almacenar imagen
-            move_uploaded_file($imagen, CARPETA_IMAGENES . $nombreImagen);
-           
+            if($_FILES['propiedad']['tmp_name']['imagen']){
+                move_uploaded_file($imagen, CARPETA_IMAGENES . $nombreImagen);
+            }
             $propiedad->guardar();
            
-            /* Subiada de Archivos */
-            //Crear Carpeta
-           /*$carpetaImagenes = '../../imagenes/';
-
-           if(!is_dir($carpetaImagenes)){
-               mkdir($carpetaImagenes);
-           }
-
-           $nombreImagen = '';
-            
-            if($imagen['name']){
-                //Eliminar imagen previa
-                unlink($carpetaImagenes . $propiedad['imagen']);
-
-                //Generar nombre Unico
-                $nombreImagen = md5(uniqid(rand(), true)) . '.jpg';
-
-                //Subir la Imagen
-                move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . $nombreImagen);
-            }else{
-                $nombreImagen = $propiedad['imagen'];
-            }*/
-
-            //Insertar en la Base de Datos
-            
-
-            
         }
 
     }

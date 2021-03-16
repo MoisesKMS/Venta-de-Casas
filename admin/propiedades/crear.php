@@ -3,17 +3,14 @@
     
     use App\Propiedad;
     use Intervention\Image\ImageManagerStatic as Image;
+    use App\Vendedor;
     
     estaAutenticado();
 
-    //Base de Datos
-    $db = conectarDB();
-
     $propiedad = new Propiedad;
 
-    //Consultar vendedores
-    $consulta = "SELECT * FROM vendedores";
-    $resultado = mysqli_query($db, $consulta);
+    //Consulta par avendedores
+    $vendedores = Vendedor::all();
 
     //Arreglo con mensajes de errores
     $errores = Propiedad::getErrores();

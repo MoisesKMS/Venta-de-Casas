@@ -21,21 +21,19 @@
 
     //Ejecutar el codigo despues de que el usuario envia el formulario
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-            
 
-        $propiedad = new Propiedad($_POST);
-
+        $propiedad = new Propiedad($_POST['propiedad']);
         /* Subiada de Archivos */
 
         //Asignar Files a una variable
-        $imagen = $_FILES['imagen'];
-            
+        $imagen = $_FILES['propiedad']['tmp_name']['imagen'];
+        
         //Generar nombre Unico
         $nombreImagen = md5(uniqid(rand(), true)) . '.jpg';
 
         // setear la imagen
         //Realiza un rezise a la imagen
-        if($_FILES['imagen']['tmp_name']){
+        if($_FILES['propiedad']['tmp_name']['imagen']){
             //$image = Image::make($_FILES['imagen']['tmp_name'])->fit(800, 600);
             $propiedad->setImagen($nombreImagen);
         }
@@ -54,7 +52,7 @@
 
             //Guarda la Imagen en elservidor
             //$image->save(CARPETA_IMAGENES . $nombreImagen);
-            move_uploaded_file($imagen['tmp_name'], CARPETA_IMAGENES . $nombreImagen);
+            move_uploaded_file($imagen, CARPETA_IMAGENES . $nombreImagen);
 
             //Guarda en la base de datos 
             $resultado = $propiedad->guardar();

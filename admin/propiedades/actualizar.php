@@ -26,13 +26,16 @@ estaAutenticado();
 
     //Ejecutar el codigo despues de que el usuario envia el formulario
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-        $titulo = mysqli_real_escape_string($db, $_POST['titulo']) ;
-        $precio = mysqli_real_escape_string($db, $_POST['precio']) ;
-        $descripcion = mysqli_real_escape_string($db, $_POST['descripcion']) ;
-        $habitaciones = mysqli_real_escape_string($db, $_POST['habitaciones']) ;
-        $wc = mysqli_real_escape_string($db, $_POST['wc']) ;
-        $estacionamiento = mysqli_real_escape_string($db, $_POST['estacionamiento']) ;
-        $vendedorId = mysqli_real_escape_string($db, $_POST['vendedor']) ;
+
+        
+        
+        //Asignar los atributos
+        $args = $_POST['propiedad'];
+        
+        
+        $propiedad->sincronizar($args);
+
+        debuguear($propiedad);
 
         //Asignar Files a una variable
         $imagen = $_FILES['imagen'];

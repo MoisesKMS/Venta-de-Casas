@@ -51,7 +51,10 @@ estaAutenticado();
 
 
         if(empty($errores)){
+            // Almacenar imagen
+            move_uploaded_file($imagen, CARPETA_IMAGENES . $nombreImagen);
            
+            $propiedad->guardar();
            
             /* Subiada de Archivos */
             //Crear Carpeta
@@ -76,19 +79,10 @@ estaAutenticado();
                 $nombreImagen = $propiedad['imagen'];
             }*/
 
-            exit;
             //Insertar en la Base de Datos
-            $query = "UPDATE propiedades SET titulo = '${titulo}', precio = '${precio}', imagen = '${nombreImagen}', descripcion = '${descripcion}', habitaciones = ${habitaciones}, wc = ${wc}, estacionamiento  = ${estacionamiento},  vendedorId = ${vendedorId} WHERE id = ${id};";
-
-            //echo $query;
             
-            $resultado = mysqli_query($db, $query);
 
-            if($resultado){
-                //Redirecionar
-                header('Location: /admin?resultado=2');
-
-            }
+            
         }
 
     }

@@ -2,6 +2,8 @@
 
 namespace App;
 
+use GuzzleHttp\Psr7\Query;
+
 class Propiedad {
     // Base de Datos
     protected static $db;
@@ -42,7 +44,40 @@ class Propiedad {
         $this->vendedorId = $args['vendedorId'] ?? 1;
     }
 
-    public function guardar() {
+    public function guardar(){
+        if(isset($this->id)){
+            //Actualizar registro
+            $this->actualizar();
+        }else{
+            //Crear nuevo Registro
+            $this->crear();
+        }
+    }
+
+    public function actualizar(){
+        //Sanitizar los datos
+        $atributos = $this->sanitizarAtributos();
+        $valores = [];
+        foreach($atributos as $key => $value){
+            $valores[] = "{$key}='{$value}'";
+        }
+        
+        $query = "UPDATE propiedades SET ";
+        $query .= join(', ', $valores );
+        $query .= " WHERE id = '" . self::$db->escape_string($this->id) . "' ";
+        $query .= " LIMIT 1 ";
+        
+        $resultado = self::$db->query($query);
+        
+        if($resultado){
+            //Redirecionar
+            header('Location: /admin?resultado=2');
+
+        }
+        
+    }
+
+    public function crear() {
         //Sanitizar los datos
         $atributos = $this->sanitizarAtributos();
 
@@ -82,7 +117,7 @@ class Propiedad {
     //Subida de archivos
     public function setImagen($imagen){
         //Elimina la imagen previa
-        if($this->id){
+        if(isset($this->id)){
             //comprobar si existe el archivo
             $existeArchivo = file_exists(CARPETA_IMAGENES . $this->imagen);
 

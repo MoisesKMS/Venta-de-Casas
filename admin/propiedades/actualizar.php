@@ -39,6 +39,7 @@ estaAutenticado();
         $errores = $propiedad->validar();
 
         //Subida de archivos
+        $imagen = $_FILES['propiedad']['tmp_name']['imagen'];
 
         //Generar nombre Unico
         $nombreImagen = md5(uniqid(rand(), true)) . '.jpg';

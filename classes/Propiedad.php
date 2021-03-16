@@ -32,7 +32,7 @@ class Propiedad {
 
     public function __construct($args = [])
     {
-        $this->id = $args['id'] ?? '';
+        $this->id = $args['id'] ?? null;
         $this->titulo = $args['titulo'] ?? '';
         $this->precio = $args['precio'] ?? '';
         $this->imagen = $args['imagen'] ?? '';
@@ -45,7 +45,7 @@ class Propiedad {
     }
 
     public function guardar(){
-        if($this->id == '' || $this->id == null){
+        if(is_null($this->id)){
             //Crear nuevo Registro
             $this->crear();
         }else{
@@ -131,7 +131,7 @@ class Propiedad {
     //Subida de archivos
     public function setImagen($imagen){
         //Elimina la imagen previa
-        if(isset($this->id)){
+        if(!is_null($this->id)){
             $this->borrarImagen();
         }
 

@@ -83,6 +83,13 @@
         }
     }
 
+    .boton-amarillo {
+        background-color: darken($amarillo, 13);
+        &:hover{
+            background-color: $amarillo;
+        }
+    }
+
     .bg-tabla tr:nth-child(2n){
         background-color: darken($grisOscuro, 1);
     }

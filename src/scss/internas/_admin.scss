@@ -36,3 +36,8 @@ table.propiedades {
     width: 20rem;
 
 }
+
+
+.bg-tabla tr:nth-child(2n){
+    background-color: darken($blanco, 10);
+}

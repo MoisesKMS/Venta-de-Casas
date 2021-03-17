@@ -1,4 +1,4 @@
-<fieldset>
+            <fieldset>
                 <legend>Informacion General</legend>
                 <label for="titulo">Titulo:</label>
                 <input type="text" name="propiedad[titulo]" id="titulo" placeholder="Titulo de la Propiedad" value="<?php echo s($propiedad->titulo); ?>">

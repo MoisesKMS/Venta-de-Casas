@@ -11,6 +11,10 @@ class PropiedadController{
         $propiedades = Propiedad::all();
         $resultado = null;
         
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            debuguear($_POST);
+        }
+        
         $router->render('propiedades/admin', [
             'propiedades' => $propiedades,
             'resultado' => $resultado

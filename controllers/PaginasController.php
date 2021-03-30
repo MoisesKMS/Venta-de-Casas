@@ -45,7 +45,15 @@ class PaginasController{
         $router->render('paginas/entrada');
     }
 
-    public static function contacto(){
-        echo 'desde contacto';
+    public static function contacto(Router $router){
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            //Crear una instancia de PHPMailer
+            
+        }
+
+        $router->render('paginas/contacto', [
+
+        ]);
     }
 }

@@ -1,5 +1,10 @@
 <main class="contenedor seccion contenido-centrado">
     <h1>Contacto</h1>
+
+    <?php  if($mensaje){ ?>
+            <p class='alerta exito'> <?php echo $mensaje; ?> </p>
+    <?php } ?>
+
     <picture>
         <source srcset="build/img/destacada3.webp" type="image/webp">
         <source srcset="build/img/destacada3.jpg" type="image/jpeg">
@@ -14,12 +19,6 @@
 
             <label for="nombre">Nombre</label>
             <input type="text" id="nombre" placeholder="Tu Nombre" name="contacto[nombre]" required>
-
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Tu email" name="contacto[email]" required>
-
-            <label for="telefono">Telefono</label>
-            <input type="tel" id="telefono" placeholder="Tu Telefono" name="contacto[telefono]">
 
             <label for="mensaje">Mensaje</label>
             <textarea id="mensaje" name="contacto[mensaje]" required></textarea>
@@ -45,19 +44,15 @@
 
             <div class="forma-contacto">
                 <label for="contactar-telefono">Telefono</label>
-                <input name="contacto" type="radio" id="contactar-telefono" value="telefono" name="contacto[contacto]" required>
+                <input type="radio" id="contactar-telefono" value="telefono" name="contacto[contacto]" required>
 
                 <label for="contactar-email">E-Mail</label>
-                <input name="contacto" type="radio" id="contactar-email" value="email" name="contacto[contacto]" required>
+                <input type="radio" id="contactar-email" value="email" name="contacto[contacto]" required>
             </div>
 
-            <p>Si eleigio telefono elija la fecha y la hora para ser contactado</p>
+            <div id="contacto"></div>
 
-            <label for="fecha">Fecha</label>
-            <input type="date" id="fecha" name="contacto[fecha]">
-
-            <label for="hora">Hora</label>
-            <input type="time" id="hora" min="09:00" max="18:00" name="contacto[hora]">
+            
         </fieldset>
         <input type="submit" value="Enviar" class="boton-verde">
     </form>

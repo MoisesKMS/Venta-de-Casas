@@ -42,7 +42,7 @@
                         <a href="/contacto">Contacto</a>
                         <?php if($auth){ ?>
                             <a href="/admin">Panel de Control</a>
-                            <a href="/cerrar-sesion">Cerrar Sesion</a>
+                            <a href="/logout">Cerrar Sesion</a>
                         <?php }
                         else{ ?>
                             <a href="/login">Iniciar Sesion</a>

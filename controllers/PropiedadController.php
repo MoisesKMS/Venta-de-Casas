@@ -99,8 +99,14 @@ class PropiedadController{
                 //$image = Image::make($_FILES['imagen']['tmp_name'])->fit(800, 600);
                 $propiedad->setImagen($nombreImagen);
             }
-
+            
             if(empty($errores)){
+
+                //Crear la carpeta para subir imagenes
+                if(!is_dir(CARPETA_IMAGENES)){
+                    mkdir(CARPETA_IMAGENES);
+                }
+
                 // Almacenar imagen
                 if($_FILES['propiedad']['tmp_name']['imagen']){
                     move_uploaded_file($imagen, CARPETA_IMAGENES . $nombreImagen);

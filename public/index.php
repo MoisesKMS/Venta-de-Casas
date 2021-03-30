@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../includes/app.php';
 
+use Controllers\LoginController;
 use MVC\Router;
 use Controllers\PropiedadController;
 use Controllers\VendedorController;
@@ -11,8 +12,10 @@ $router = new Router();
 
 /* Zona Privada */
 
-//Propiedades
+//Panel de Control
 $router->get('/admin', [PropiedadController::class, 'index']);
+
+//Propiedades
 $router->get('/propiedades/crear', [PropiedadController::class, 'crear']);
 $router->post('/propiedades/crear', [PropiedadController::class, 'crear']);
 $router->get('/propiedades/actualizar', [PropiedadController::class, 'actualizar']);
@@ -26,8 +29,14 @@ $router->get('/vendedores/actualizar', [VendedorController::class, 'actualizar']
 $router->post('/vendedores/actualizar', [VendedorController::class, 'actualizar']);
 $router->post('/vendedores/eliminar', [VendedorController::class, 'eliminar']);
 
-/* Zona Publica */
 
+/** Login y Autenticación **/
+$router->get('/login', [LoginController::class, 'login']);
+$router->post('/login', [LoginController::class, 'login']);
+$router->get('/logout', [LoginController::class, 'logout']);
+
+
+/* Zona Publica */
 $router->get('/', [PaginasController::class, 'index']);
 $router->get('/nosotros', [PaginasController::class, 'nosotros']);
 $router->get('/propiedades', [PaginasController::class, 'propiedades']);

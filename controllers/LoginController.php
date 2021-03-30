@@ -14,12 +14,21 @@ class LoginController{
 
             if(empty($errores)){
                 //Verificar si el usuario existe
-
-
-                //Verificar el password
-
-                
-                //Autenticar al usuario
+                $resultado = $auth->existeUsuario();
+                if(!$resultado){
+                    //Verificar si el usuario existe para mostrar error
+                    $errores = Admin::getErrores();
+                }else{
+                    //Verificar el password
+                    $autenticado = $auth->comprobarPassword($resultado);
+                    if($autenticado){
+                        //Autenticar al usuario
+                        $auth->autenticar();
+                    } else{
+                        //Passowrd incorrecto
+                        $errores = Admin::getErrores();
+                    }
+                }
             }
         }
 
@@ -30,6 +39,8 @@ class LoginController{
     }
 
     public static function logout(){
-        echo 'logout';
+        session_start();
+        $_SESSION = [];
+        header('Location: /');
     }
 }

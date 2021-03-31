@@ -16,6 +16,15 @@ class Router {
     }
 
     public function comprobarRutas(){
+
+        session_start();
+        
+        $auth = $_SESSION['login'] ?? null;
+
+        //Arreglo de rutas protegidas
+        $rutas_protegidas = ['/admin', '/propiedades/crear', '/propiedades/actualizar', '/propiedades/eliminar', '/vendedores/crear', '/vendedores/actualizar', '/vendedores/eliminar'];
+
+
         $urlActual = $_SERVER['PATH_INFO'] ?? '/';
         $metodo = $_SERVER['REQUEST_METHOD'];
     
@@ -25,10 +34,17 @@ class Router {
             $fn = $this->rutasPOST[$urlActual] ?? null;
         }
 
+        //Proteger las rutas
+        if(in_array($urlActual, $rutas_protegidas) && !$auth){
+            header('Location: /login');
+        }
+
         if($fn){
+            // La URL existe y hay una funcion asociada
             call_user_func($fn, $this);
         }else{
-            echo "Pagin no encontrada";
+            echo 'Pagina no encontrada, usted sera redirecionado a la pagina de inicio en 5 segundos...';
+            header('refresh: 5; url = /');
         }
     }
 

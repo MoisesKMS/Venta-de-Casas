@@ -6,23 +6,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function darkMode() {
     const prefiereDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
-    if (prefiereDarkMode.matches) {
-        document.body.classList.add('dark-mode');
-    } else {
-        document.body.classList.remove('dark-mode');
-    }
-
-    prefiereDarkMode.addEventListener('change', function() {
+    let optionMode;
+    if (localStorage.getItem('modoOscuro') == null) {
         if (prefiereDarkMode.matches) {
             document.body.classList.add('dark-mode');
+            localStorage.setItem('modoOscuro', true);
         } else {
             document.body.classList.remove('dark-mode');
+            localStorage.setItem('modoOscuro', false);
         }
-    });
+
+    } else {
+        optionMode = localStorage.getItem('modoOscuro');
+
+        if (optionMode === 'true') {
+            optionMode = true;
+            document.body.classList.add('dark-mode');
+        } else if (optionMode === 'false') {
+            optionMode = false;
+            document.body.classList.remove('dark-mode');
+        }
+    }
 
     const botonDarkMode = document.querySelector('.dark-mode-boton');
     botonDarkMode.addEventListener('click', function() {
-        document.body.classList.toggle('dark-mode')
+        document.body.classList.toggle('dark-mode');
+        optionMode = localStorage.getItem('modoOscuro');
+        if (optionMode === 'true') {
+            optionMode = false;
+        } else if (optionMode === 'false') {
+            optionMode = true;
+        }
+        localStorage.setItem('modoOscuro', optionMode);
     });
 }
 

@@ -89,7 +89,7 @@ class PaginasController{
             if($respuestas['contacto'] == 'telefono'){
                 $contenido .= '<p>Telefono: ' . $respuestas['telefono'] . '</p>';
                 $contenido .= '<p>El cliente espera ser contactado el : ' . $respuestas['fecha'] . '</p>';
-                $contenido .= '<p>El cliente espera ser contactado a las: ' . $respuestas['horas'] . ' horas' . '</p>';
+                $contenido .= '<p>El cliente espera ser contactado a las: ' . $respuestas['hora'] . ' horas' . '</p>';
 
             } else {
                 //Email

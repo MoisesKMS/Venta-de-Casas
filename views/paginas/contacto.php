@@ -2,7 +2,7 @@
     <h1 data-cy="heading-contacto">Contacto</h1>
 
     <?php  if($mensaje){ ?>
-            <p class='alerta exito'> <?php echo $mensaje; ?> </p>
+            <p data-cy="alerta-envio-formulario" class='alerta exito'><?php echo $mensaje; ?></p>
     <?php } ?>
 
     <picture>
@@ -11,31 +11,31 @@
         <img loading="lazy" src="build/img/destacada3.jpg" alt="Imagen destacada">
     </picture>
 
-    <h2>Llene el formulario de contacto</h2>
+    <h2 data-cy="heading-formulario">Llene el Formulario de Contacto</h2>
 
-    <form class="formulario" method="POST" action="/contacto">
+    <form data-cy="formulario-contacto" class="formulario" method="POST" action="/contacto">
         <fieldset>
             <legend>Información Personal</legend>
 
             <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" placeholder="Tu Nombre" name="contacto[nombre]" required>
+            <input data-cy="input-nombre" type="text" id="nombre" placeholder="Tu Nombre" name="contacto[nombre]" required>
 
             <label for="mensaje">Mensaje</label>
-            <textarea id="mensaje" name="contacto[mensaje]" required></textarea>
+            <textarea data-cy="input-mensaje" id="mensaje" name="contacto[mensaje]" required></textarea>
         </fieldset>
 
         <fieldset>
             <legend>Información sobre la Propiedad</legend>
 
             <label for="opciones">Vende</label>
-            <select id="opciones" name="contacto[tipo]" required>
+            <select data-cy="input-opciones" id="opciones" name="contacto[tipo]" required>
                     <option value="" disabled selected>-- Seleccione --</option>
                     <option value="compra">Compra</option>
                     <option value="vende">Vende</option>
                 </select>
 
             <label for="presupuesto">Precio o Presupuesto</label>
-            <input type="number" id="presupuesto" placeholder="Tu precio o presupuesto" name="contacto[precio]" required>
+            <input data-cy="input-precio" type="number" id="presupuesto" placeholder="Tu precio o presupuesto" name="contacto[precio]" required>
         </fieldset>
 
         <fieldset>
@@ -44,10 +44,10 @@
 
             <div class="forma-contacto">
                 <label for="contactar-telefono">Telefono</label>
-                <input type="radio" id="contactar-telefono" value="telefono" name="contacto[contacto]" required>
+                <input data-cy="forma-contacto" type="radio" id="contactar-telefono" value="telefono" name="contacto[contacto]" required>
 
                 <label for="contactar-email">E-Mail</label>
-                <input type="radio" id="contactar-email" value="email" name="contacto[contacto]" required>
+                <input data-cy="forma-contacto" type="radio" id="contactar-email" value="email" name="contacto[contacto]" required>
             </div>
 
             <div id="contacto"></div>

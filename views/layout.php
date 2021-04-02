@@ -19,8 +19,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Pragma" content="no-cache">
     <title>Bienes Raices</title>
-    <link rel="stylesheet" href="../build/css/app.css">
-    
+    <link rel="shortcut icon" type="image/png" href="build/img/favicon.png"/>
+    <link rel="stylesheet" href="build/css/app.css">
 </head>
 
 <body>
@@ -54,7 +54,7 @@
             <!--.barra-->
             <?php
             if($inicio){
-                echo "<h1>Venda de Casas y Departamentos Exclusivos de Lujo</h1>";
+                echo "<h1 data-cy='heading-sitio'>Venda de Casas y Departamentos Exclusivos de Lujo</h1>";
             }
             ?>
         </div>

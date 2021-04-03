@@ -9,7 +9,7 @@ Cypress para Unit Testing
 ![Bienes Raices Imagen](https://i.imgur.com/2Zo4CTr.png)
 
 ## Pre-requisitos 📋
-Se hacer uso de las diferentes librerias implementadas es nesesaria la instalacion de Node.js y Composer
+Para hacer uso de las diferentes librerias implementadas es nesesaria la instalacion de Node.js y Composer
 
 ## Instalación 🔧
 Puedes instalar todas las dependencias juntas usando:
@@ -26,7 +26,7 @@ npm run
 gulp
 ```
 
-## Librerias Implementadas con Node.JS
+## Librerias Implementadas con Node.JS 📜
 ```
 cssnano: 4.1.10
 cypress: 6.8.0
@@ -46,7 +46,7 @@ gulp-webp: 4.0.1
 terser: 5.3.8
 ```
 
-## Librerias implementadas con Composer
+## Librerias implementadas con Composer 📜
 ```
 intervention image: 2.5
 phpmailer: 6.3

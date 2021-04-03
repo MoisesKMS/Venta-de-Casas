@@ -1,2 +1,37 @@
+# Source code
+*.bash            text eol=lf
+*.bat             text eol=crlf
+*.cmd             text eol=crlf
+*.coffee          text
+*.css             text diff=css
+*.htm             text diff=html
+*.html            text diff=html
+*.inc             text
+*.ini             text
+*.js              text
+*.json            text
+*.jsx             text
+*.less            text
+*.ls              text
+*.map             text -diff
+*.od              text
+*.onlydata        text
+*.php             text diff=php
+*.pl              text
+*.ps1             text eol=crlf
+*.py              text diff=python
+*.rb              text diff=ruby
+*.sass            text
+*.scm             text
+*.scss            text diff=css
+*.sh              text eol=lf
+*.sql             text
+*.styl            text
+*.tag             text
+*.ts              text
+*.tsx             text
+*.xml             text
+*.xhtml           text diff=html
+
 # Auto detect text files and perform LF normalization
 * text=auto

@@ -20,7 +20,7 @@ composer install
 ```
 
 ## Configuracion ⚙️
-Para poder correr la compilacion de los paquetes es necario ejecutar alguno de los siguientes comandos
+Para poder correr la compilacion de los paquetes es necesario ejecutar alguno de los siguientes comandos
 ```
 npm run
 gulp

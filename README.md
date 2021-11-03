@@ -5,8 +5,8 @@ PHP y MySQL como backend.
 Gulp y Composer como compiladores.
 Cypress para Unit Testing
 
-![Bienes Raices Imagen](https://i.imgur.com/uI0WUGL.png)
-![Bienes Raices Imagen](https://i.imgur.com/2Zo4CTr.png)
+![Bienes Raices Imagen](https://lh3.googleusercontent.com/-2VwSORfgMYI/YYIP9Ei9III/AAAAAAAAA9E/9hnQlIYcsSoEaT1e2aSD-n7CyvhfoYkpQCLcBGAsYHQ/s16000/1.png)
+![Bienes Raices Imagen](https://lh3.googleusercontent.com/-HE1Q-18e-zk/YYIP8JxCAfI/AAAAAAAAA9A/xHEBnn0yoq0NsCUMmTHC8qAsEb4ngwKOwCLcBGAsYHQ/s16000/2.png)
 
 ## Pre-requisitos 📋
 Para hacer uso de las diferentes librerias implementadas es nesesaria la instalacion de Node.js y Composer

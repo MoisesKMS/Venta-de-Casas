@@ -25,7 +25,8 @@ class Router {
         $rutas_protegidas = ['/admin', '/propiedades/crear', '/propiedades/actualizar', '/propiedades/eliminar', '/vendedores/crear', '/vendedores/actualizar', '/vendedores/eliminar'];
 
 
-        $urlActual = $_SERVER['PATH_INFO'] ?? '/';
+        $urlActual = $_SERVER['REQUEST_URI'] ?? '/';
+        $urlActual = explode('?', $urlActual)[0] ?? $urlActual;
         $metodo = $_SERVER['REQUEST_METHOD'];
     
         if($metodo === 'GET'){
@@ -43,8 +44,8 @@ class Router {
             // La URL existe y hay una funcion asociada
             call_user_func($fn, $this);
         }else{
-            echo 'Pagina no encontrada, usted sera redirecionado a la pagina de inicio en 5 segundos...';
-            header('refresh: 5; url = /');
+            echo 'Pagina no encontrada, usted sera redirecionado a la pagina de inicio en 3 segundos...';
+            header('refresh: 3; url = /');
         }
     }
 
